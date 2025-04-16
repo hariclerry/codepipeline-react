@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hello World</h1>
-      <p>Pipeline works!!!</p>
+      <p>Pipeline and cloudformation provision with CloudFront and S3 successfully deployed!!!</p>
     </div>
   );
 }
