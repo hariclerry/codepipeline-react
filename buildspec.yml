@@ -11,3 +11,10 @@ artifacts:
   files:
     - '**/*'
   base-directory: build  # Directory with output files (e.g., React app)
+post_build:
+  commands:
+    - echo "Deploying to S3..."
+    - aws s3 sync build/ s3://$S3_BUCKET_NAME --delete
+    - echo "Invalidating CloudFront..."
+    - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+    - echo "Deployment complete."
